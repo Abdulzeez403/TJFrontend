@@ -21,11 +21,11 @@ export const JournalDetial = () => {
     setDrawerOpen(!isDrawerOpen);
   };
 
-  const handleDelete = (value: any) => {
+  const handleDelete = (value: unknown) => {
     dispatch(deleteJournal(value?._id));
   };
 
-  const handleView = (value: any) => {
+  const handleView = (value: unknown) => {
     return value?.id;
   };
 

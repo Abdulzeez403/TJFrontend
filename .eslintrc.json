@@ -1,16 +1,36 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"],
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "rules": {
-    // Example of disabling a specific rule
-    "react/react-in-jsx-scope": "off", // Disable if you don't want to import React in every file
-    // You can add more rules to disable or customize as needed
-    "react/prop-types": "off", // Disable prop-types validation if using TypeScript
-
-    "@typescript-eslint/no-unused-vars": "off"
+    // Disable specific React rules not required in modern setups
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "@typescript-eslint/no-require-imports": "off",
+    // TypeScript-specific rules
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all", // Check all variables
+        "args": "after-used", // Check arguments after they are used
+        "ignoreRestSiblings": true, // Ignore variables in rest siblings
+        "argsIgnorePattern": "^_" // Ignore variables starting with an underscore
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": [
+      "warn",
+      {
+        "fixToUnknown": true, // Suggest using `unknown` instead of `any`
+        "ignoreRestArgs": false // Apply the rule to rest arguments
+      }
+    ],
+    "@typescript-eslint/explicit-module-boundary-types": "off" // Disable for better flexibility with module exports
   },
   "settings": {
     "react": {
-      "version": "detect" // Automatically detect the react version
+      "version": "detect" // Automatically detect the React version
     }
   }
 }

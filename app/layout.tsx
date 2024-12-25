@@ -62,7 +62,7 @@ export default function RootLayout({
                     {toggleForm ? <SignInForm /> : <SignUpForm />}
                     <footer>
                       <h4 className="text-center text-md">
-                        You don't have an account yet?{" "}
+                        You don&apos;t have an account yet?{" "}
                         <span
                           className="text-blue-600 cursor-pointer"
                           onClick={() => setToggleForm(!toggleForm)}

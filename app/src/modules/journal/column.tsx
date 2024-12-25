@@ -24,7 +24,7 @@ export const columns = ({
           table.getIsAllPageRowsSelected() ||
           (table.getIsSomePageRowsSelected() && "indeterminate")
         }
-        onCheckedChange={(value: any) =>
+        onCheckedChange={(value: unknown) =>
           table.toggleAllPageRowsSelected(!!value)
         }
         aria-label="Select all"
@@ -33,7 +33,7 @@ export const columns = ({
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
-        onCheckedChange={(value: any) => row.toggleSelected(!!value)}
+        onCheckedChange={(value: unknown) => row.toggleSelected(!!value)}
         aria-label="Select row"
       />
     ),
@@ -178,7 +178,7 @@ export const columns = ({
     id: "actions",
     cell: ({ row }) => (
       <DataTableRowActions
-        row={row as any}
+        row={row as unknown}
         onEdit={onEdit}
         onDelete={onDelete}
         onView={onView}

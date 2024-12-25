@@ -36,7 +36,7 @@ const DataTableRowActions = <TData,>({
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => onView(row.original)}>
-          <Link href={`/researcher/upload/${(row.original as any)._id}`}>
+          <Link href={`/researcher/upload/${(row.original as unknown)._id}`}>
             View
           </Link>
         </DropdownMenuItem>
@@ -44,7 +44,7 @@ const DataTableRowActions = <TData,>({
           Edit
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => onDelete(row.original as any)._id}>
+        <DropdownMenuItem onClick={() => onDelete(row.original as unknown)._id}>
           Delete
         </DropdownMenuItem>
       </DropdownMenuContent>

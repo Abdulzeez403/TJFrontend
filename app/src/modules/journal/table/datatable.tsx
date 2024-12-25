@@ -33,14 +33,14 @@ import { ResponsiveDrawerDialog } from "@/app/src/components/modal/modal";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  onEdit: (value: any) => void;
-  onDelete: (user: any) => void;
+  onEdit: (value: unknown) => void;
+  onDelete: (user: unknown) => void;
   onDismiss: () => void;
-  onView: (value: any) => void;
+  onView: (value: unknown) => void;
   onOpen: () => void;
   open: boolean;
   children: React.ReactNode;
-  title: any;
+  title: unknown;
   description: string;
 }
 
@@ -126,9 +126,9 @@ export function TableComponent<TData, TValue>({
 
       <Table className="border-2 rounded-lg border-customPrimary">
         <TableHeader className=" bg-slate-300  ">
-          {table.getHeaderGroups().map((headerGroup: any) => (
+          {table.getHeaderGroups().map((headerGroup: unknown) => (
             <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header: any) => {
+              {headerGroup.headers.map((header: unknown) => {
                 return (
                   <TableHead
                     key={header.id}
@@ -148,13 +148,13 @@ export function TableComponent<TData, TValue>({
         </TableHeader>
         <TableBody className=" border-2 border-customPrimary">
           {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row: any) => (
+            table.getRowModel().rows.map((row: unknown) => (
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
                 className="  "
               >
-                {row.getVisibleCells().map((cell: any) => (
+                {row.getVisibleCells().map((cell: unknown) => (
                   <TableCell key={cell.id} className="">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
