@@ -17,16 +17,16 @@ export const JournalDetial = () => {
     dispatch(fetchJournal());
   }, [dispatch]);
 
-  const handleUpdate = (value: IJournal) => {
+  const handleUpdate = () => {
     setDrawerOpen(!isDrawerOpen);
   };
 
-  const handleDelete = (value: unknown) => {
-    dispatch(deleteJournal(value?._id));
+  const handleDelete = (value: any) => {
+    dispatch(deleteJournal(value?.id));
   };
 
-  const handleView = (value: unknown) => {
-    return value?.id;
+  const handleView = (value: any) => {
+    return value?._id;
   };
 
   const handleClose = () => {
