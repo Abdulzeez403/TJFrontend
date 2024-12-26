@@ -27,7 +27,7 @@ export const SingleDatePicker: React.FC<SingleDatePickerProps> = ({
       <label className="block text-sm font-medium text-gray-700 mb-1">
         {label}
       </label>
-      <Popover isOpen={isOpen} onOpenChange={setIsOpen}>
+      <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
           <button
             className={cn(
