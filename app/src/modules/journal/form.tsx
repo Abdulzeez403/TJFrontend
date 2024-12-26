@@ -163,8 +163,8 @@ const JournalForm: React.FC = () => {
               name="image"
               value={values.image || ""}
               onChange={(e) => setFieldValue("image", e.target.value)}
-              error={errors.image}
-              touched={touched.image}
+              // error={errors.image}
+              // touched={touched.image}
             />
           </div>
 
