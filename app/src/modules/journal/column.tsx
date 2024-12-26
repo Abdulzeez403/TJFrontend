@@ -48,7 +48,7 @@ export const columns = ({
     ),
     cell: ({ row }) => (
       <Image
-        src={row.original.image}
+        src={row?.original?.image}
         alt={row.original.symbol}
         width={50}
         height={50}
@@ -178,7 +178,7 @@ export const columns = ({
     id: "actions",
     cell: ({ row }) => (
       <DataTableRowActions
-        row={row as unknown}
+        row={row as any}
         onEdit={onEdit}
         onDelete={onDelete}
         onView={onView}

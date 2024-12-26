@@ -4,7 +4,7 @@ export interface IJournal {
   entryPrice: number;
   exitPrice?: number;
   notes?: string;
-  image?: string;
+  image?: any;
   stopLoss?: number;
   takeProfit?: number;
   tradeDirection: "long" | "short";
