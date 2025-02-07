@@ -10,9 +10,7 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-
 import { CloudUpload } from "lucide-react";
-
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -29,14 +27,15 @@ import { StatusFilter } from "@/app/src/components/tables/tableItem/statusFilter
 import { DataTableViewOptions } from "@/app/src/components/tables/tableItem/filter";
 import { DataTablePagination } from "@/app/src/components/tables/tableItem/pagination";
 import { ResponsiveDrawerDialog } from "@/app/src/components/modal/modal";
+import { IJournal } from "@/app/src/redux/Journal/type";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  onEdit: (value: unknown) => void;
-  onDelete: (user: unknown) => void;
+  onEdit: (value: IJournal) => void;
+  onDelete: (value: IJournal) => void;
   onDismiss: () => void;
-  onView: (value: unknown) => void;
+  onView: (value: IJournal) => void;
   onOpen: () => void;
   open: boolean;
   children: React.ReactNode;
@@ -58,7 +57,6 @@ export function TableComponent<TData, TValue>({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
-
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
 
@@ -91,15 +89,14 @@ export function TableComponent<TData, TValue>({
 
   return (
     <div className="border-2 rounded-lg p-4">
-      <div className="flex justify-between items-center ">
+      <div className="flex justify-between items-center">
         <div className="flex items-center gap-x-2">
           <div className="flex items-center py-4">
+            {/* Uncomment and use Input if needed */}
             {/* <Input
               placeholder="Search name"
-              value={
-                (table.getColumn("name")?.getFilterValue() as string) ?? ""
-              }
-              onChange={(event: any) =>
+              value={table.getColumn("name")?.getFilterValue() ?? ""}
+              onChange={(event) =>
                 table.getColumn("name")?.setFilterValue(event.target.value)
               }
               className="max-w-sm"
@@ -112,7 +109,7 @@ export function TableComponent<TData, TValue>({
           />
         </div>
 
-        <div className=" flex items-center">
+        <div className="flex items-center">
           <div>
             <DataTableViewOptions table={table} />
           </div>
@@ -125,37 +122,28 @@ export function TableComponent<TData, TValue>({
       </div>
 
       <Table className="border-2 rounded-lg border-customPrimary">
-        <TableHeader className=" bg-slate-300  ">
-          {table.getHeaderGroups().map((headerGroup: unknown) => (
+        <TableHeader className="bg-slate-300">
+          {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header: unknown) => {
-                return (
-                  <TableHead
-                    key={header.id}
-                    className="text-black font-bold p-2"
-                  >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                );
-              })}
+              {headerGroup.headers.map((header) => (
+                <TableHead key={header.id} className="text-black font-bold p-2">
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                </TableHead>
+              ))}
             </TableRow>
           ))}
         </TableHeader>
-        <TableBody className=" border-2 border-customPrimary">
+        <TableBody className="border-2 border-customPrimary">
           {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row: unknown) => (
-              <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && "selected"}
-                className="  "
-              >
-                {row.getVisibleCells().map((cell: unknown) => (
-                  <TableCell key={cell.id} className="">
+            table.getRowModel().rows.map((row) => (
+              <TableRow key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
@@ -174,7 +162,7 @@ export function TableComponent<TData, TValue>({
       <DataTablePagination table={table} />
 
       <ResponsiveDrawerDialog
-        title={title}
+        title=""
         description={description}
         isOpen={open}
         onClose={onDismiss}

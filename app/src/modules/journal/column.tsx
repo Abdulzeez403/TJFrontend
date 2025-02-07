@@ -1,5 +1,5 @@
 import { Checkbox } from "@/components/ui/checkbox";
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef, Row } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "../../components/tables/tableItem/column";
 import Image from "next/image";
 import DataTableRowActions from "./table/dataArrowActions";
@@ -176,14 +176,15 @@ export const columns = ({
   {
     accessorKey: "Actions",
     id: "actions",
-    cell: ({ row }) => (
+    cell: ({ row }: { row: Row<IJournal> }) => (
       <DataTableRowActions
-        row={row as any}
+        row={row}
         onEdit={onEdit}
         onDelete={onDelete}
         onView={onView}
       />
     ),
+
     size: 50,
   },
 ];

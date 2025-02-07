@@ -21,8 +21,8 @@ export const JournalDetial = () => {
     setDrawerOpen(!isDrawerOpen);
   };
 
-  const handleDelete = (value: any) => {
-    dispatch(deleteJournal(value?.id));
+  const handleDelete = (value: IJournal) => {
+    dispatch(deleteJournal(value?._id)
   };
 
   const handleView = (value: any) => {

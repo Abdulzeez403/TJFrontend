@@ -1,5 +1,5 @@
 export interface IJournal {
-  _id?: string;
+  _id?: string | any;
   symbol: string;
   asset: string;
   entryPrice: number;
