@@ -22,7 +22,7 @@ export const JournalDetial = () => {
   };
 
   const handleDelete = (value: IJournal) => {
-    dispatch(deleteJournal(value?._id)
+    dispatch(deleteJournal(value?._id));
   };
 
   const handleView = (value: any) => {

@@ -25,16 +25,6 @@ const DataTableRowActions = <TData extends IJournal>({
   onDelete,
   onView,
 }: DataTableRowActionsProps<TData>) => {
-  // Handle row deletion with error handling and logging
-  // const handleDelete = async () => {
-  //   try {
-  //     await onDelete(row.original); // Wait for deletion to complete
-  //     console.log(`Deleted journal with ID: ${row.original._id}`); // Log successful deletion
-  //   } catch (error) {
-  //     console.error("Error deleting journal:", error); // Log error if deletion fails
-  //   }
-  // };
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
